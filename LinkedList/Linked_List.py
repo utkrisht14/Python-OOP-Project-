@@ -1,3 +1,6 @@
+from alembic.command import current
+
+
 class Node:
     def __init__(self, value, next_node=None):
         self._value = value
@@ -54,6 +57,39 @@ class LinkedList:
 
         # Count the total number of nodes
         def count_total_nodes(self):
-            pass
+            current_node = self.head
+            nodes_array = []
+
+            if self.head is None:
+                print("Linked List is empty with no elements.")
+            while current_node is not None:
+                nodes_array.append(current_node)
+                current_node = current_node.next
+            print(f"Total count of elements in the linked list are: {len(nodes_array)}")
+
+
+        # Find a node.
+        def find_node(self, target_value):
+            if self.head is None:
+                print("List is empty. Nothing to search for.")
+                return
+
+            current_node = self.head
+            index = 0
+            while current_node is not None:
+                if current_node.value == target_value:
+                    print(f"Target value was found at index{index}")
+                    return
+
+                current_node = current_node.next
+                index += 1
+
+            print(f"{target_value} not found in the list ")
+
+        # Delete the node
+        def delete_node(self, target_value):
+            if self.head is None:
+                print("List is empty.")
+
 
 
